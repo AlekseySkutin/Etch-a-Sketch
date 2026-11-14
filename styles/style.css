@@ -1,0 +1,13 @@
+#canvas {
+    display: flex;
+    flex-wrap: wrap;
+    border: solid rgb(0, 0, 0) 2px;
+}
+
+.square {
+    aspect-ratio: 1/1;
+}
+
+.square-color{
+    background-color: gray;
+}
