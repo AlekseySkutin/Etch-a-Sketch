@@ -11,6 +11,10 @@ btn.addEventListener("click", () => {
     buildCanvas(size);
 });
 
+let isDrawing = false;
+
+document.addEventListener("mousedown", () => isDrawing = true);
+document.addEventListener("mouseup", () => isDrawing = false);
 
 
 function buildCanvas(size) {
@@ -21,9 +25,17 @@ function buildCanvas(size) {
 
         square.classList.add("square");
         square.style.width = `${side}%`
-        square.addEventListener("mouseenter", (e) => e.target.classList.add("square-color"));
-        // square.addEventListener("mouseleave", (e) => e.target.classList.remove("square-color"));
-
+        square.addEventListener("mouseenter", (e) => {
+            if (isDrawing) {
+                e.target.classList.add("square-color");
+                let opacity = parseFloat(e.target.style.opacity);
+                if (Number.isNaN(opacity))
+                    opacity = 0.1
+                if (opacity <= 1)
+                    opacity += 0.1;
+                e.target.style.opacity = opacity;
+            }
+        });
         canvas.appendChild(square);
     }
 }

@@ -9,5 +9,6 @@
 }
 
 .square-color{
-    background-color: gray;
+    background-color: black;
+    opacity: 0.1;
 }
